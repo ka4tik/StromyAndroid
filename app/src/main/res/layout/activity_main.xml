@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100"
+        android:text="60"
         android:id="@+id/temperatureLabel"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
@@ -21,22 +21,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/degreeImageView"
-        android:layout_above="@+id/temperatureLabel"
-        android:layout_toRightOf="@+id/temperatureLabel"
-        android:layout_toEndOf="@+id/temperatureLabel"
         android:src="@drawable/degree"
         android:layout_alignTop="@+id/temperatureLabel"
-        android:layout_marginTop="50dp" />
+        android:layout_toRightOf="@+id/locationLabel"
+        android:layout_toEndOf="@+id/locationLabel"
+        android:layout_marginTop="34dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="At 5:00 PM it will be"
         android:id="@+id/timeLabel"
-        android:layout_alignBottom="@+id/degreeImageView"
-        android:layout_centerHorizontal="true"
         android:textColor="#80ffffff"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_above="@+id/degreeImageView"
+        android:layout_alignLeft="@+id/temperatureLabel"
+        android:layout_alignStart="@+id/temperatureLabel"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -63,10 +63,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/temperatureLabel"
-        android:layout_alignLeft="@+id/temperatureLabel"
-        android:layout_alignStart="@+id/temperatureLabel"
         android:layout_marginTop="10dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:gravity="center_horizontal">
 
         <LinearLayout
             android:orientation="vertical"
