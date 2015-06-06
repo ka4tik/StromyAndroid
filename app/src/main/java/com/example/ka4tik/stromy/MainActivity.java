@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
     @InjectView(R.id.precipValue) TextView mPrecipValue;
     @InjectView(R.id.summaryLabel) TextView mSummaryLabel;
     @InjectView(R.id.iconImageView) ImageView mIconImageView;
+    @InjectView(R.id.refeshImageView) ImageView mRefeshImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,23 @@ public class MainActivity extends ActionBarActivity {
 
         ButterKnife.inject(this);
 
+        final double latitude=37.8267;
+        final double longitude=-122.423;
+
+        mRefeshImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getForecast(latitude,longitude);
+            }
+        });
+
+        getForecast(latitude,longitude);
+
+    }
+
+    private void getForecast(double latitude,double longitude) {
         String api_key="d162e457e174aa85b8b40e85dc69ff75";
-        double latitude=37.8267;
-        double longitude=-122.423;
+
         String forcastUrl = "https://api.forecast.io/forecast/"+api_key+"/"+latitude+","+longitude;
 
         if(isNetworkAvailable()) {
@@ -96,9 +112,8 @@ public class MainActivity extends ActionBarActivity {
             });
         }
         else {
-            Toast.makeText(this,"Network is unavailable",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Network is unavailable", Toast.LENGTH_LONG).show();
         }
-
     }
 
     private void updateDisplay() {
